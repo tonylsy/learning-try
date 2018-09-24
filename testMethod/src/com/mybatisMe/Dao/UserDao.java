@@ -2,8 +2,10 @@ package com.mybatisMe.Dao;
 
 import java.util.List;
 
-import com.mybatisMe.entities.User;
+import org.springframework.stereotype.Component;
 
+import com.mybatisMe.entities.User;
+@Component
 public interface UserDao {
 	/**
 	 * 查询

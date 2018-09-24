@@ -5,8 +5,11 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -14,8 +17,8 @@ import com.mybatisMe.Dao.UserDao;
 import com.mybatisMe.common.CommonUtil;
 import com.mybatisMe.entities.User;
 
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = {"classpath:applicationContext.xml"})
+/*@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = {"classpath:applicationContext.xml"})*/
 class UserDaoImplTest {
 
 	/*@Autowired
@@ -26,6 +29,16 @@ class UserDaoImplTest {
 		SqlSessionFactory sqlSessionFactory = CommonUtil.getSqlFactory();
 		SqlSession sqlSession = sqlSessionFactory.openSession();
 		UserDao userDao = sqlSession.getMapper(UserDao.class);
+		User user = userDao.selectUser(1);
+		assertNotNull(user);
+		assertEquals(33, user.getAge());
+		assertEquals("john", user.getName());
+	}
+	@Test
+	@DisplayName("spring with mybatis")
+	void testSelectUserWithSpring() throws Exception {
+	    ApplicationContext applicationContext = new ClassPathXmlApplicationContext("applicationContext.xml");
+	    UserDao userDao = (UserDao)applicationContext.getBean("userDao");
 		User user = userDao.selectUser(1);
 		assertNotNull(user);
 		assertEquals(33, user.getAge());
