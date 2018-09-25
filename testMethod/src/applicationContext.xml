@@ -12,6 +12,8 @@
 		base-package="com.mybatisMe.junit" />
 	<context:component-scan
 		base-package="com.mybatisMe.service.Impl" />
+	<context:component-scan
+		base-package="com.mybatisMe.Dao" />
 	<context:property-placeholder
 		location="classpath:databaseResource.properties" />
 	<!-- setting database -->
