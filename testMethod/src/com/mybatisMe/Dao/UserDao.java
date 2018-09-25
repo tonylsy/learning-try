@@ -2,6 +2,7 @@ package com.mybatisMe.Dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Component;
 
 import com.mybatisMe.entities.User;
@@ -25,5 +26,5 @@ public interface UserDao {
 	 * 批量新增
 	 * @param users
 	 */
-	public void insertUsers(List<User> users) throws Exception;
+	public void insertUsers(@Param("users") List<User> users) throws Exception;
 }

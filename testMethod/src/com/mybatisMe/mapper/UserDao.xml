@@ -11,10 +11,10 @@
 		INSERT INTO USER (NAME,AGE) VALUES (#{name},#{age})
 	</insert>
 
-	<insert id="insertUsers" useGeneratedKeys="true" keyProperty="id">
-		INSERT INTO USER (NAME,AGE) VALUES 
-		<foreach item="userEntity" collection="list" separator=",">
-		(#{userEntity。name},#{userEntity。age})
+	<insert id="insertUsers" parameterType="list">
+		INSERT INTO USER (ID,NAME,AGE) VALUES 
+		<foreach item="user" collection="users" separator=",">
+		(#{user.id},#{user.name},#{user.age})
 		</foreach>
 	</insert>
 </mapper>
