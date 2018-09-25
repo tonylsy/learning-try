@@ -17,5 +17,17 @@
 		(#{user.id},#{user.name},#{user.age})
 		</foreach>
 	</insert>
+	
+	<update id="updateUser" parameterType="user">
+		update user set name = #{name},age=#{age} where id=#{id}
+	</update>
+	
+	<delete id="deleteUser" parameterType="int">
+		delete from user where id=#{id}
+	</delete>
+	
+	<select id="selectUsersByName" parameterType="string" resultType="user">
+		select id,name,age from user where name=#{name}
+	</select>
 </mapper>
 
