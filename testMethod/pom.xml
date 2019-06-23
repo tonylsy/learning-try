@@ -259,7 +259,13 @@
 				<version>4.0.1</version>
 				<scope>provided</scope>
 			</dependency>
-
+			<!-- https://mvnrepository.com/artifact/org.springframework/org.springframework.test -->
+			<dependency>
+				<groupId>org.springframework</groupId>
+				<artifactId>org.springframework.test</artifactId>
+				<version>3.2.2.RELEASE</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 </project>
