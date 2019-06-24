@@ -1,6 +1,6 @@
 package stack;
 
-import com.dataStructure.list.SqList;
+import list.SqList;
 
 public class SqStack extends SqList implements IStack {
 
