@@ -1,11 +1,11 @@
 package com.mybatisMe.common;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-
-import java.awt.Font;
-
 import org.junit.jupiter.api.Test;
+
+import java.awt.*;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 class RandomCodeTest {
 	RandomCodeOnlyNumber randomCodeOnlyNumber = new RandomCodeOnlyNumber();

@@ -50,7 +50,7 @@ public class BiTreeNode {
 		} else {
 			sb.append(data.toString());
 		}
-		sb.append(", leftChild=" + leftChild.toString() + ", rightChild=" + rightChild.toString() + "]");
+		//sb.append(", leftChild=" + leftChild.toString() + ", rightChild=" + rightChild.toString() + "]");
 		return sb.toString();
 	}
 

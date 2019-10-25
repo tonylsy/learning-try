@@ -1,22 +1,18 @@
 package com.mybatisMe.junit;
 
-import static org.junit.Assert.assertNull;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import java.util.List;
-
+import com.mybatisMe.Dao.UserDao;
+import com.mybatisMe.common.CommonUtil;
+import com.mybatisMe.entities.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import com.mybatisMe.Dao.UserDao;
-import com.mybatisMe.common.CommonUtil;
-import com.mybatisMe.entities.User;
-import com.mybatisMe.service.UserService;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 /*@RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:applicationContext.xml"})*/
