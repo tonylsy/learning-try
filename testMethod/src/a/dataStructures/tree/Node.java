@@ -7,11 +7,14 @@ import java.util.Objects;
  *
  * @param <T>
  */
-public class Node<T> {
-    private T context;
-    private Node<T> left;
-    private Node<T> right;
-    private boolean read;
+public class Node<T>{
+    protected T context;
+    protected Node<T> left;
+    protected Node<T> right;
+
+    public Node() {
+
+    }
 
     public Node(T context) {
         this.context = context;
@@ -48,17 +51,6 @@ public class Node<T> {
         this.right = right;
     }
 
-    public void setRead() {
-        this.read = true;
-    }
-
-    public void noRead() {
-        this.read = false;
-    }
-
-    public boolean hasRead() {
-        return this.read;
-    }
 
     @Override
     public boolean equals(Object o) {
