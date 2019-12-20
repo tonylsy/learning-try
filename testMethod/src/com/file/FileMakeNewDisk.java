@@ -10,15 +10,15 @@ public class FileMakeNewDisk {
 		File file = new File(pathname + File.separator + "hello.txt");
 		File file_path = new File(pathname);
 		try {
-			// System.out.println(file_path.exists());//文件夹是否存�?
-			// System.out.println(file_path.isDirectory()); 是否是文件夹
+			// System.out.println(file_path.exists());//document is exist?
+			// System.out.println(file_path.isDirectory()); is a document?
 			if (file_path.exists()) {
-				System.out.println("文件夹已存在");
+				System.out.println("document is exist");
 			} else {
 				file_path.mkdir();
 			}
 			if (file.exists()) {
-				System.out.print("文件已存�?");
+				System.out.print("file is exists");
 			} else {
 				file.createNewFile();
 			}
@@ -26,7 +26,7 @@ public class FileMakeNewDisk {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-			System.out.println(">>文件夹执行错�?");
+			System.out.println(">>execute error");
 			file_path.delete();
 		}
 

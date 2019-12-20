@@ -16,7 +16,6 @@ public class DoRun implements Runnable {
 		try {
 			for (int i=0;i<10;i++) {
 				System.out.println("Running Thread: " + threadName + ",yeeeeeeeh!>>>>>>>>>>>>>"+i);
-				// 让线程睡眠一会
 				Thread.sleep(50);
 				System.out.println("Running Thread: " + threadName + ","+i +">>>finish!");
 			}
