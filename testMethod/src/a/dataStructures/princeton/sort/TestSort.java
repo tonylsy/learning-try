@@ -1,4 +1,4 @@
-package a.dataStructures.sort;
+package a.dataStructures.princeton.sort;
 
 public class TestSort {
     public static Comparable[] OLD = {1, 10, 15, 2, 4, 0, 4, 8, 5, 9, 15, 0, 16, 15};

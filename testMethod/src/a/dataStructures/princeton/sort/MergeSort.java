@@ -1,4 +1,4 @@
-package a.dataStructures.sort;
+package a.dataStructures.princeton.sort;
 
 public class MergeSort {
     public static void sort(Comparable[] arr) {

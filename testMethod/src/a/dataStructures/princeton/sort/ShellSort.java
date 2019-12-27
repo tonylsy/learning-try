@@ -1,4 +1,4 @@
-package a.dataStructures.sort;
+package a.dataStructures.princeton.sort;
 
 public class ShellSort extends InsertionSort {
     public static int DIVIDER = 2;
