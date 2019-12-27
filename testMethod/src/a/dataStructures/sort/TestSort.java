@@ -1,12 +1,15 @@
 package a.dataStructures.sort;
 
 public class TestSort {
-    public static Comparable[] OLD = {0, 10, 15, 2, 4, 0, 4, 8, 5, 9, 15, 0, 16, 15};
-    public static final Comparable[] RESULT = {0, 0, 0, 2, 4, 4, 5, 8, 9, 10, 15, 15, 15, 16};
+    public static Comparable[] OLD = {1, 10, 15, 2, 4, 0, 4, 8, 5, 9, 15, 0, 16, 15};
+    public static Comparable[] SP = {8, 9, 1, 7, 2, 3, 5, 4, 6, 0};
+    public static final Comparable[] RESULT = {0, 0, 1, 2, 4, 4, 5, 8, 9, 10, 15, 15, 15, 16};
 
     public static void main(String[] args) {
         //SelectionSort.sort(OLD);
-        InsertionSort.sort(OLD);
+        //InsertionSort.sort(OLD);
+        //ShellSort.sort(OLD);
+        MergeSort.sort(OLD);
         if (compareArray(OLD, RESULT)) {
             System.out.println("SORT SUCCESS!");
         } else {
