@@ -38,7 +38,7 @@ public class LineSegment {
      * @return a string representation of this line segment
      */
     public String toString() {
-        return p + " -> " + q;
+        return p + " -> " + q + " and slope = " + getSlope();
     }
 
     /**
@@ -59,20 +59,19 @@ public class LineSegment {
     public static class LineSegmentComparator implements Comparator<LineSegment> {
         @Override
         public int compare(LineSegment o1, LineSegment o2) {
-            double slope = o1.getSlope();
-            double slope2 = o1.getSlope();
-            if (Math.abs(slope) == Math.abs(slope2) || slope == slope2) {
+            double slope = Math.abs(o1.getSlope());
+            double slope2 = Math.abs(o2.getSlope());
+            if (slope == slope2) {
                 return 0;
-            }
-            if (slope > slope2) {
+            } else if (slope > slope2) {
                 return 1;
+            } else {
+                return -1;
             }
-            return -1;
         }
     }
 
     public double getSlope() {
         return q.slopeTo(p);
     }
-
 }

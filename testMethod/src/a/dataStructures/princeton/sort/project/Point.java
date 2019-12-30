@@ -9,6 +9,7 @@ public class Point implements Comparable<Point> {
 
     private final int x;     // x-coordinate of this point
     private final int y;     // y-coordinate of this point
+
     /**
      * Initializes a new point.
      *
@@ -114,10 +115,19 @@ public class Point implements Comparable<Point> {
         return comparator;
     }
 
-    public static class ByIndex implements Comparator<Point> {
+    private class ByIndex implements Comparator<Point> {
         @Override
         public int compare(Point o1, Point o2) {
-            return o1.compareTo(o2);
+            Point point0 = new Point(x, y);
+            double slope = point0.slopeTo(o1);
+            double slope2 = point0.slopeTo(o2);
+            if (slope - slope2 < 0) {
+                return -1;
+            } else if (slope - slope2 > 0) {
+                return 1;
+            } else {
+                return 0;
+            }
         }
     }
 
@@ -171,7 +181,7 @@ public class Point implements Comparable<Point> {
         //slopeOrder
         Point[] points = new Point[]{a00, a1_hor, a11_line, a0, a11, a1};
         Point[] result = new Point[]{a1_hor, a00, a0, a11_line, a1, a11};
-        Arrays.sort(points, new ByIndex());
+        Arrays.sort(points, new Point(0, 0).slopeOrder());
         assert result.equals(points);
 
         System.out.println("test pass!!");
