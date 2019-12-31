@@ -1,6 +1,7 @@
 package a.dataStructures.princeton.sort.test;
 
 import a.dataStructures.princeton.sort.project.BruteCollinearPoints;
+import a.dataStructures.princeton.sort.project.FastCollinearPoints;
 import a.dataStructures.princeton.sort.project.LineSegment;
 import a.dataStructures.princeton.sort.project.Point;
 import edu.princeton.cs.algs4.StdDraw;
@@ -35,8 +36,8 @@ public class TestProject {
         StdDraw.show();
 
         // print and draw the line segments
-        //FastCollinearPoints collinear = new FastCollinearPoints(points);
-        BruteCollinearPoints collinear = new BruteCollinearPoints(points);
+        FastCollinearPoints collinear = new FastCollinearPoints(points);
+        //BruteCollinearPoints collinear = new BruteCollinearPoints(points);
         for (LineSegment segment : collinear.segments()) {
             //StdOut.println(segment);
             System.out.println(segment);
@@ -62,14 +63,14 @@ public class TestProject {
         list.add(new Point(3, 0));
 
         //x = 1
-       /* list.add(new Point(1, 8));
-        list.add(new Point(1, 5));*/
+        list.add(new Point(1, 8));
+        list.add(new Point(1, 5));
         list.add(new Point(1, 7));
         list.add(new Point(1, 6));
 
         // y = 0
-        list.add(new Point(8, 0));
-        list.add(new Point(6, 0));
+        /*list.add(new Point(8, 0));
+        list.add(new Point(6, 0));*/
 
         //other points
         list.add(new Point(2, 4));
@@ -80,7 +81,6 @@ public class TestProject {
         list.add(new Point(0, 6));
         list.add(new Point(0, 4));
         list.add(new Point(0, 2));
-        list.add(new Point(0, 3));
 
         return list.toArray(new Point[list.size()]);
     }

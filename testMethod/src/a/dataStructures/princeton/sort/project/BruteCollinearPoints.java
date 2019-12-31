@@ -1,11 +1,11 @@
 package a.dataStructures.princeton.sort.project;
 
-import java.util.*;
-import java.util.function.Function;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class BruteCollinearPoints {
-    private List<LineSegment> segments = new ArrayList<>();
+    private final List<LineSegment> segments = new ArrayList<>();
 
     /**
      * finds all line segments containing 4 points
@@ -13,9 +13,9 @@ public class BruteCollinearPoints {
      * @param points all points
      */
     public BruteCollinearPoints(Point[] points) {
-        // check corner cases
+        //check corner cases
         if (points == null) {
-            throw new IllegalArgumentException("the number of points is invalidate");
+            throw new NullPointerException("the number of points is invalidate");
         }
         if (hasDuplicate(points)) {
             throw new IllegalArgumentException("points have duplicate points");
@@ -31,9 +31,9 @@ public class BruteCollinearPoints {
                 slope = points[i].slopeTo(points[j]);
                 for (int k = j + 1; k < n - 1; k++) {
                     if (slope == points[i].slopeTo(points[k])) {
-                        for (int l = k + 1; l < n; l++) {
-                            if (slope == points[i].slopeTo(points[l])) {
-                                segments.add(new LineSegment(points[i], points[l]));
+                        for (int x = k + 1; x < n; x++) {
+                            if (slope == points[i].slopeTo(points[x])) {
+                                segments.add(new LineSegment(points[i], points[x]));
                             }
                         }
                     }
@@ -65,9 +65,13 @@ public class BruteCollinearPoints {
     }
 
     private boolean hasDuplicate(Point[] points) {
-        Map map = Arrays.asList(points).
-                stream().collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
-        return !map.isEmpty();
+        Arrays.sort(points);
+        for (int i = 0; i < points.length - 1; i++) {
+            if (points[i].compareTo(points[i + 1]) == 0) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }

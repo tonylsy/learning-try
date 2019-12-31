@@ -146,7 +146,7 @@ public class Point implements Comparable<Point> {
     /**
      * Unit tests the Point data type.
      */
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         Point a1 = new Point(0, 1);
 
         //horizontal
@@ -165,12 +165,12 @@ public class Point implements Comparable<Point> {
         assert a1.compareTo(a11_line) > 0;
 
         //test slop
-        /*
+        *//*
          * For completeness, the slope is defined to be
          * +0.0 if the line segment connecting the two points is horizontal;
          * Double.POSITIVE_INFINITY if the line segment is vertical;
          * and Double.NEGATIVE_INFINITY if (x0, y0) and (x1, y1) are equal.
-         */
+         *//*
         assert a1.slopeTo(a1_hor) == +0.0;
         assert a1.slopeTo(a11) == Double.POSITIVE_INFINITY;
         assert a1.slopeTo(a00) == Double.NEGATIVE_INFINITY;
@@ -185,5 +185,5 @@ public class Point implements Comparable<Point> {
         assert result.equals(points);
 
         System.out.println("test pass!!");
-    }
+    }*/
 }
