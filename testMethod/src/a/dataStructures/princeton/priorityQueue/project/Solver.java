@@ -8,8 +8,8 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Solver {
-    private final List<Board> track;
-    private Board currentBoard;
+    private final int len;
+    private final Iterator<Board> it;
 
     /**
      * find a solution to the initial board (using the A*algorithm)
@@ -21,35 +21,25 @@ public class Solver {
             throw new IllegalArgumentException();
         }
         /** initial variable*/
-        currentBoard = initial;
-        track = new ArrayList<>();
-        track.add(initial);
+        List<Board> list = new ArrayList<>();
+        list.add(initial);
 
         /** find the minimum track of 8-puzzle */
-        MinPQ<Board> minPQ = null;
-        do {
-            minPQ = new MinPQ<>((Board less, Board bigger) -> {
-                if (less.equals(bigger)) {
-                    return 0;
-                }
-                int thisKey = less.manhattan();
-                int thatKey = bigger.manhattan();
-                if (thisKey > thatKey) {
-                    return 1;
-                } else if (thisKey < thatKey) {
-                    return -1;
-                } else {
-                    return 0;
-                }
-            });
+        Board currentBoard = initial;
+        while (!currentBoard.isGoal()) {
             Iterator<Board> it = currentBoard.neighbors().iterator();
+            Board minBoard = currentBoard;
             while (it.hasNext()) {
                 Board board = it.next();
-                minPQ.insert(board);
+                if (board.manhattan() < minBoard.manhattan()) {
+                    minBoard = board;
+                }
             }
-            currentBoard = minPQ.min();
-            track.add(currentBoard);
-        } while (!currentBoard.isGoal());
+            list.add(minBoard);
+            currentBoard = minBoard;
+        }
+        len = list.size();
+        it = list.iterator();
     }
 
     /**
@@ -58,7 +48,7 @@ public class Solver {
      * @return result
      */
     public boolean isSolvable() {
-        return currentBoard.isGoal();
+        return len != 1;
     }
 
     /**
@@ -67,7 +57,7 @@ public class Solver {
      * @return number
      */
     public int moves() {
-        return track.size() - 1;
+        return len - 1;
     }
 
     /**
@@ -76,15 +66,9 @@ public class Solver {
      * @return
      */
     public Iterable<Board> solution() {
-        return new SolutionIterable();
-    }
-
-    private class SolutionIterable implements Iterable<Board> {
-
-        @Override
-        public Iterator<Board> iterator() {
-            return track.iterator();
-        }
+        return () -> {
+            return it;
+        };
     }
 
     //test client (see below)
@@ -92,7 +76,7 @@ public class Solver {
 
 
         //solve the puzzle
-        Solver solver = new Solver(TestUnits.puzzle08());
+        Solver solver = new Solver(TestUnits.puzzle01());
 
         //test moves
         System.out.println(solver.moves());

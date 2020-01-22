@@ -118,14 +118,15 @@ public class Board {
     /**
      * does this board equal y?
      *
-     * @param o the object
+     * @param object the object
      * @return the result of equality
      */
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Board)) return false;
-        Board board = (Board) o;
+    public boolean equals(Object object) {
+        if(object == null) return false;
+        if (this == object) return true;
+        if (this.getClass() != object.getClass()) return false;
+        Board board = (Board) object;
         return Arrays.equals(blocks, board.blocks);
     }
 
@@ -137,7 +138,7 @@ public class Board {
      */
     public Iterable<Board> neighbors() {
         return () -> {
-            /**find the 0 block */
+            /** find the 0 block */
             int index = 0;
             for (int i = 0; i < len; i++) {
                 if (blocks[i] == 0) {

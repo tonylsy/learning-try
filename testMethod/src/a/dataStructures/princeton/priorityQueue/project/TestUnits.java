@@ -31,4 +31,14 @@ public class TestUnits {
         Board initial = new Board(tiles);
         return initial;
     }
+    public static Board puzzle01(){
+        //reference moves() = 2
+        int[][] tiles = new int[2][2];
+        tiles[0][0] = 1;
+        tiles[0][1] = 0;
+        tiles[1][0] = 3;
+        tiles[1][1] = 2;
+        Board initial = new Board(tiles);
+        return initial;
+    }
 }
