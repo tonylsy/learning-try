@@ -2,16 +2,19 @@ package a.dataStructures.princeton.priorityQueue.project;
 
 import edu.princeton.cs.algs4.StdRandom;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.List;
 
 public class Board {
-    private int dimension;
-    private int len;
-    private int[] blocks;
+    private final int dimension;
+    private final int len;
+    private final int[] blocks;
+    private Board twin;
 
     /**
-     * create a board from an n-by-n array of tiles,
-     * where tiles[row][col] = tile at (row, col)
+     * create a board from an n-by-n array of tiles,where tiles[row][col] = tile at (row, col)
      *
      * @param tiles
      */
@@ -39,15 +42,18 @@ public class Board {
     /**
      * string representation of this board
      *
-     * @return a array on puzzle
+     * @return
      */
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append(dimension + "\n");
         int index = 0;
         for (int i = 0; i < dimension; i++) {
             for (int j = 0; j < dimension; j++) {
                 sb.append(blocks[index]);
+                if (j != dimension - 1) {
+                    sb.append(" ");
+                }
                 index++;
             }
             sb.append("\n");
@@ -88,14 +94,12 @@ public class Board {
         int manhattan = 0;
         for (int k = 0; k < len; k++) {
             if (blocks[k] == 0) continue;
-            int rowdiff = Math.abs(getRow(blocks[k]) - getRow(k + 1));
-            int coldiff = Math.abs(getCol(blocks[k]) - getCol(k + 1));
-            manhattan = manhattan + rowdiff + coldiff;
+            int rowDistance = Math.abs(getRow(blocks[k]) - getRow(k + 1));
+            int colDistance = Math.abs(getCol(blocks[k]) - getCol(k + 1));
+            manhattan = manhattan + rowDistance + colDistance;
         }
         return manhattan;
     }
-
-    // is this board the goal board?
 
     /**
      * justify this board to be goal board
@@ -114,22 +118,17 @@ public class Board {
     /**
      * does this board equal y?
      *
-     * @param y the object
+     * @param o the object
      * @return the result of equality
      */
-    public boolean equals(Object y) {
-        if (y == null) {
-            return false;
-        }
-        if (!(y instanceof Board)) {
-            return false;
-        }
-        if (y == this) {
-            return true;
-        }
-        Board that = (Board) y;
-        return Arrays.equals(blocks, that.blocks);
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Board)) return false;
+        Board board = (Board) o;
+        return Arrays.equals(blocks, board.blocks);
     }
+
 
     /**
      * find all neighboring boards
@@ -137,13 +136,8 @@ public class Board {
      * @return Iterable
      */
     public Iterable<Board> neighbors() {
-        return new BoardIterable();
-    }
-
-    private class BoardIterable implements Iterable<Board> {
-        @Override
-        public Iterator<Board> iterator() {
-            //find the 0 block
+        return () -> {
+            /**find the 0 block */
             int index = 0;
             for (int i = 0; i < len; i++) {
                 if (blocks[i] == 0) {
@@ -151,10 +145,10 @@ public class Board {
                     break;
                 }
             }
-            //get up,left,bottom,right index
-            int[] indexs = getSurroundIndexs(index);
+            /** get up,left,bottom,right index */
+            int[] indexs = getSurroundIndexes(index);
 
-            //create the new board
+            /** create the new board */
             List<Board> boards = new ArrayList<>();
             for (int i = 0; i < indexs.length; i++) {
                 if (indexs[i] != -1) {
@@ -165,27 +159,7 @@ public class Board {
                 }
             }
             return boards.iterator();
-        }
-    }
-
-    public Comparator<Board> getComparator() {
-        return new BoardComparator();
-    }
-
-    private class BoardComparator implements Comparator<Board> {
-        @Override
-        public int compare(Board o1, Board o2) {
-            int thisKey = o1.manhattan();
-            int thatKey = o2.manhattan();
-            /* the smaller key means bigger */
-            if (thisKey > thatKey) {
-                return 1;
-            } else if (thisKey < thatKey) {
-                return -1;
-            } else {
-                return 0;
-            }
-        }
+        };
     }
 
     /**
@@ -194,28 +168,19 @@ public class Board {
      * @return a twin board
      */
     public Board twin() {
-        int[] twinBlocks = Arrays.copyOf(blocks, blocks.length);
-        // choose a non-blank block randomly
-        int k;
-        do {
-            k = StdRandom.uniform(len);
-        } while (blocks[k] == 0);
-        //get surrounding index
-        int[] indexs = getSurroundIndexs(k);
-        int range = indexs.length;
-        // choose an exchange direction randomly
-        int key;
-        while (true) {
-            key = StdRandom.uniform(range);
-            // a direction index is out of bound
-            if (indexs[key] == -1) {
-                continue;
-            }
-            exchangeElement(twinBlocks, k, key);
-            break;
+        if (twin == null) {
+            int[] twinBlocks = Arrays.copyOf(blocks, blocks.length);
+            /** choose a non-blank block randomly */
+            int k, j;
+            do {
+                k = StdRandom.uniform(len);
+                j = StdRandom.uniform(len);
+            } while (blocks[k] == 0 || blocks[j] == 0 || k == j);
+
+            exchangeElement(twinBlocks, k, j);
+            twin = new Board(twinBlocks, dimension);
         }
-        Board board = new Board(twinBlocks, dimension);
-        return board;
+        return twin;
     }
 
     /**
@@ -246,31 +211,31 @@ public class Board {
      * @param index the node index in blocks
      * @return all indexs in blocks
      */
-    private int[] getSurroundIndexs(int index) {
-        //get row and col in n-n array
+    private int[] getSurroundIndexes(int index) {
+        /** get row and col in n-n array*/
         int row = getRow(index + 1);
         int col = getCol(index + 1);
 
-        //get up,left,bottom,right index
-        int[] indexs = new int[4];
-        indexs[0] = getIndex(row - 1, col);
-        indexs[1] = getIndex(row, col - 1);
-        indexs[2] = getIndex(row + 1, col);
-        indexs[3] = getIndex(row, col + 1);
-        return indexs;
+        /** get up,left,bottom,right index*/
+        int[] indexes = new int[4];
+        indexes[0] = getIndex(row - 1, col);
+        indexes[1] = getIndex(row, col - 1);
+        indexes[2] = getIndex(row + 1, col);
+        indexes[3] = getIndex(row, col + 1);
+        return indexes;
     }
 
     /**
      * exchange two element in a array
      *
-     * @param blocks the array
+     * @param array  the array
      * @param indexA first index
      * @param indexB second index
      */
-    private void exchangeElement(int[] blocks, int indexA, int indexB) {
-        int temp = blocks[indexA];
-        blocks[indexA] = blocks[indexB];
-        blocks[indexB] = temp;
+    private void exchangeElement(int[] array, int indexA, int indexB) {
+        int temp = array[indexA];
+        array[indexA] = array[indexB];
+        array[indexB] = temp;
     }
 
 
@@ -296,9 +261,9 @@ public class Board {
      */
     public static void main(String[] args) {
         //test neighbour method
-        /*int[][] tiles = new int[3][3];
-        tiles[0][0] = 1;
-        tiles[0][1] = 0;
+        int[][] tiles = new int[3][3];
+        tiles[0][0] = 0;
+        tiles[0][1] = 1;
         tiles[0][2] = 3;
         tiles[1][0] = 4;
         tiles[1][1] = 2;
@@ -310,9 +275,16 @@ public class Board {
         Iterator<Board> it = b.neighbors().iterator();
         while (it.hasNext()) {
             System.out.println(it.next());
-        }*/
+        }
 
         //test getIndex
         //System.out.println(b.getIndex(2, 2));
+
+        //test twin
+        /*System.out.println(b);
+        Board b1 = b.twin();
+        System.out.println(b1);
+        System.out.println(b.equals(b1));
+        System.out.println(b1.equals(b));*/
     }
 }

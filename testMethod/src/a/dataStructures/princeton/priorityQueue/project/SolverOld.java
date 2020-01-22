@@ -4,7 +4,7 @@ import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.MinPQ;
 import edu.princeton.cs.algs4.Stack;
 import edu.princeton.cs.algs4.StdOut;
-
+@Deprecated
 public class SolverOld {
     private MinPQ<SearchNode> pq;
     private MinPQ<SearchNode> pqTwin;
@@ -113,7 +113,7 @@ public class SolverOld {
     // solve a slider puzzle
     public static void main(String[] args) {
         // create initial board from file
-        In in = new In(args[0]);
+        /*In in = new In(args[0]);
         int n = in.readInt();
         int[][] blocks = new int[n][n];
         for (int i = 0; i < n; i++)
@@ -131,6 +131,6 @@ public class SolverOld {
             StdOut.println("Minimum number of moves = " + solver.moves());
             for (Board board : solver.solution())
                 StdOut.println(board);
-        }
+        }*/
     }
 }
