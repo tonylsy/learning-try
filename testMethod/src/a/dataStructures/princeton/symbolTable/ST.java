@@ -1,6 +1,8 @@
 package a.dataStructures.princeton.symbolTable;
 
-
+/*
+ * this class is describe the symbol table
+ */
 public class ST<Key extends Comparable<Key>, Value> {
     //private int CAPACITY = 10;
     private int size;
