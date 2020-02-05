@@ -155,7 +155,7 @@ public class RBT<Key extends Comparable<Key>, Value> {
             if (current.left != null) {
                 stack.push(current.left);
             }
-            sb.append(current + " ");
+            sb.append(current).append(" ");
         }
         return sb.toString();
     }
