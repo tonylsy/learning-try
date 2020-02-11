@@ -6,7 +6,7 @@ public class Node<Key extends Comparable<Key>, Value> {
     public static final boolean RED = true;
     public static final boolean BLACK = false;
 
-    public Node<Key, Value> right, left;
+    public Node<Key, Value> right, left, parent;
     public Key key;
     public Value value;
     public int count;//count the subtree node number
@@ -21,6 +21,20 @@ public class Node<Key extends Comparable<Key>, Value> {
         this.key = key;
         this.value = value;
         this.count = count;
+    }
+
+    public Node(Node<Key, Value> parent, Key key, Value value) {
+        this.parent = parent;
+        this.key = key;
+        this.value = value;
+    }
+
+    public Node(Node<Key, Value> parent, Key key, Value value, int count, boolean color) {
+        this.parent = parent;
+        this.key = key;
+        this.value = value;
+        this.count = count;
+        this.color = color;
     }
 
     public Node(Key key, Value value, int count, boolean color) {
