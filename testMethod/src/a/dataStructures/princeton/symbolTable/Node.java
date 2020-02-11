@@ -1,13 +1,57 @@
 package a.dataStructures.princeton.symbolTable;
 
+import java.util.Objects;
+
 public class Node<Key extends Comparable<Key>, Value> {
+    public static final boolean RED = true;
+    public static final boolean BLACK = false;
+
     public Node<Key, Value> right, left;
     public Key key;
     public Value value;
     public int count;//count the subtree node number
+    public boolean color;
 
-    Node(Key key, Value value) {
+    public Node(Key key, Value value) {
         this.key = key;
         this.value = value;
+    }
+
+    public Node(Key key, Value value, int count) {
+        this.key = key;
+        this.value = value;
+        this.count = count;
+    }
+
+    public Node(Key key, Value value, int count, boolean color) {
+        this.key = key;
+        this.value = value;
+        this.count = count;
+        this.color = RED;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append(value);
+        sb.append("[");
+        sb.append(color ? "red" : "black");
+        sb.append("]");
+        return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Node)) return false;
+        Node<?, ?> node = (Node<?, ?>) o;
+        return color == node.color &&
+                key.equals(node.key) &&
+                value.equals(node.value);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(key, value, color);
     }
 }
