@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 import org.junit.jupiter.api.Test;
 
-import bubble.BubbleSort;
+import sort.BubbleSort;
 
 class TestBubble {
 	BubbleSort bs = new BubbleSort();

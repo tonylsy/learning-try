@@ -233,6 +233,12 @@ public class ST<Key extends Comparable<Key>, Value> {
             keys[i] = temp[i];
         }
     }*/
+    public static void main(String[] args) {
+        int i = Integer.parseInt("1304F", 16);
+        char[] chars = Character.toChars(i);
+        String s = new String(chars);
+        System.out.println(s);
+    }
 
 
 }
