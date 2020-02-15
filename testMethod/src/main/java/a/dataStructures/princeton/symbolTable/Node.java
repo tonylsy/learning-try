@@ -59,13 +59,17 @@ public class Node<Key extends Comparable<Key>, Value> {
         if (this == o) return true;
         if (!(o instanceof Node)) return false;
         Node<?, ?> node = (Node<?, ?>) o;
-        return color == node.color &&
+        return count == node.count &&
+                color == node.color &&
+                Objects.equals(right, node.right) &&
+                Objects.equals(left, node.left) &&
+                Objects.equals(parent, node.parent) &&
                 key.equals(node.key) &&
-                value.equals(node.value);
+                Objects.equals(value, node.value);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(key, value, color);
+        return Objects.hash(right, left, parent, key, value, count, color);
     }
 }

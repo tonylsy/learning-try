@@ -5,6 +5,7 @@ import java.util.Stack;
 
 /*
  * red black tree implements the 2-3-4 tree by recursive method
+ * the node of this class can't use parent parameter
  */
 public class RedBlackTree234<Key extends Comparable<Key>, Value> {
     private Node<Key, Value> root;
@@ -54,8 +55,11 @@ public class RedBlackTree234<Key extends Comparable<Key>, Value> {
     private Node<Key, Value> insertRotate2(Node<Key, Value> node) {
         if (isRed(node.left) && isRed(node.left.left) && isBlack(node.right)) {
             node = rotateRight(node);
+            flipColor(node);
         } else if (isRed(node.right) && isRed(node.right.right) && isBlack(node.left)) {
             node = rotateLeft(node);
+            flipColor(node);
+
         }
         return node;
     }
@@ -71,9 +75,10 @@ public class RedBlackTree234<Key extends Comparable<Key>, Value> {
     }
 
     private void flipColor(Node<Key, Value> node) {
+        if (node == null) return;
         node.color = Node.RED;
-        node.left.color = Node.BLACK;
-        node.right.color = Node.BLACK;
+        if (node.left != null) node.left.color = Node.BLACK;
+        if (node.right != null) node.right.color = Node.BLACK;
     }
 
     public void delete(Key key) {
@@ -124,12 +129,14 @@ public class RedBlackTree234<Key extends Comparable<Key>, Value> {
         }
         return node;
     }
+
     //the rotateLeft common version
-    private void turnToLeft(Node<Key, Value> node){
+    private void turnToLeft(Node<Key, Value> node) {
 
     }
+
     //the rotateRight common version
-    private void turnToRight(Node<Key, Value> node){
+    private void turnToRight(Node<Key, Value> node) {
 
     }
 
@@ -236,23 +243,5 @@ public class RedBlackTree234<Key extends Comparable<Key>, Value> {
             sb.append(current).append(" ");
         }
         return sb.toString();
-    }
-
-    public static void main(String[] args) {
-        int[] arr = {10, 20, -10, 15, 17, 40, 50, 60};
-        int[] arr2 = {7, 30, 10, 5, -5, 20, 38, 35};
-        //int[] arr2 = {20, 7, 30, 5, -5, 38, 35, 10};
-        RedBlackTree234<Integer, Integer> rbt = new RedBlackTree234<>();
-        RedBlackTree234<Integer, Integer> rbt2 = new RedBlackTree234<>();
-        for (int value : arr) {
-            rbt.insert(value, value);
-        }
-        for (int value : arr2) {
-            rbt2.insert(value, value);
-        }
-
-        //the end:17[black] 10[red] -10[black] 15[black] 40[red] 20[black] 50[black] 60[red]
-        System.out.println("the end:" + rbt.toString());
-        System.out.println("the end:" + rbt2.toString());
     }
 }
