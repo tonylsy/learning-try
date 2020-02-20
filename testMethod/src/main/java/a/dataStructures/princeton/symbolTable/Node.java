@@ -12,6 +12,11 @@ public class Node<Key extends Comparable<Key>, Value> {
     public int count;//count the subtree node number
     public boolean color;
 
+    //remain the constructor in order to avoid the nullPointerException
+    public Node() {
+        this.color = BLACK;
+    }
+
     public Node(Key key, Value value) {
         this.key = key;
         this.value = value;
@@ -57,13 +62,11 @@ public class Node<Key extends Comparable<Key>, Value> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
+        if (o == null) return false;
         if (!(o instanceof Node)) return false;
         Node<?, ?> node = (Node<?, ?>) o;
         return count == node.count &&
                 color == node.color &&
-                Objects.equals(right, node.right) &&
-                Objects.equals(left, node.left) &&
-                Objects.equals(parent, node.parent) &&
                 key.equals(node.key) &&
                 Objects.equals(value, node.value);
     }
