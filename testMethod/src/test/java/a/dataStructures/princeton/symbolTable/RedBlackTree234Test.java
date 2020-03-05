@@ -10,7 +10,6 @@ import org.junit.jupiter.api.Assertions;
  *
  * @author <Authors name>
  * @version 1.0
- * @since <pre>2ÔÂ 14, 2020</pre>
  */
 public class RedBlackTree234Test {
 

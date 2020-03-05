@@ -1,65 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
-	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
-	<context:component-scan
-		base-package="com.mybatisMe.junit" />
-	<context:component-scan
-		base-package="com.mybatisMe.service.Impl" />
-	<context:component-scan
-		base-package="com.mybatisMe.Dao" />
-	<context:property-placeholder
-		location="classpath:databaseResource.properties" />
-	<!-- setting database -->
-	<bean id="dataSource"
-		class="com.mchange.v2.c3p0.ComboPooledDataSource"
-		destroy-method="close">
-		<property name="driverClass" value="${mysql.driver}" />
-		<property name="jdbcUrl" value="${mysql.url}" />
-		<property name="user" value="${mysql.username}" />
-		<property name="password" value="${mysql.password}" />
-		<!-- <property name="minPoolSize" value="${mysql.minPoolSize}" /> <property 
-			name="maxPoolSize" value="${mysql.maxPoolSize}" /> <property name="initialPoolSize" 
-			value="${mysql.initialPoolSize}" /> <property name="maxIdleTime" value="${mysql.maxIdleTime}" 
-			/> -->
-	</bean>
+    <context:component-scan
+            base-package="com.mybatisMe.junit"/>
+    <context:component-scan
+            base-package="com.mybatisMe.service.Impl"/>
+    <context:component-scan
+            base-package="com.mybatisMe.Dao"/>
+    <context:property-placeholder
+            location="classpath:databaseResource.properties"/>
+    <!-- setting database -->
+    <bean id="dataSource"
+          class="com.mchange.v2.c3p0.ComboPooledDataSource"
+          destroy-method="close">
+        <property name="driverClass" value="${mysql.driver}"/>
+        <property name="jdbcUrl" value="${mysql.url}"/>
+        <property name="user" value="${mysql.username}"/>
+        <property name="password" value="${mysql.password}"/>
+        <!-- <property name="minPoolSize" value="${mysql.minPoolSize}" /> <property
+            name="maxPoolSize" value="${mysql.maxPoolSize}" /> <property name="initialPoolSize"
+            value="${mysql.initialPoolSize}" /> <property name="maxIdleTime" value="${mysql.maxIdleTime}"
+            /> -->
+    </bean>
 
-	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> 
-		<property name="dataSource" ref="dataSource"></property>
-	</bean>
+    <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
-	<bean id="transactionManager"
-		class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-		<property name="dataSource" ref="dataSource"></property>
-	</bean> 
+    <bean id="transactionManager"
+          class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
 
-	 <tx:annotation-driven transaction-manager="transactionManager" />
-	 <!--<bean 
-		class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy"> 
-		<property name="targetDataSource" ref="dataSourse"></property> </bean> -->
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--<bean
+       class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
+       <property name="targetDataSource" ref="dataSourse"></property> </bean> -->
 
-	<!-- setting mybatis with spring -->
-	<bean id="sqlSessionFactory"
-		class="org.mybatis.spring.SqlSessionFactoryBean">
-		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation"
-			value="classpath:spring-mybatis-config.xml" />
-		<property name="mapperLocations" value="classpath:com/mybatisMe/mapper/*.xml" 
-			/> <property name="typeAliasesPackage" value="com.mybatisMe.entities" />
-	</bean>
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.mybatisMe.Dao" />
-		<property name="sqlSessionFactoryBeanName"
-			value="sqlSessionFactory" />
-	</bean>
-	<bean id="sqlSessionTemplate"
-		class="org.mybatis.spring.SqlSessionTemplate">
-		<constructor-arg ref="sqlSessionFactory"></constructor-arg>
-	</bean>
+    <!-- setting mybatis with spring -->
+    <bean id="sqlSessionFactory"
+          class="org.mybatis.spring.SqlSessionFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="configLocation"
+                  value="classpath:spring-mybatis-config.xml"/>
+        <property name="mapperLocations" value="classpath:mapper/*.xml"/>
+        <property name="typeAliasesPackage" value="com.mybatisMe.entities"/>
+    </bean>
+    <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+        <property name="basePackage" value="com.mybatisMe.Dao"/>
+        <property name="sqlSessionFactoryBeanName"
+                  value="sqlSessionFactory"/>
+    </bean>
+    <bean id="sqlSessionTemplate"
+          class="org.mybatis.spring.SqlSessionTemplate">
+        <constructor-arg ref="sqlSessionFactory"/>
+    </bean>
 </beans>

@@ -6,7 +6,7 @@
     version="3.0">
   <display-name></display-name>	
   <welcome-file-list>
-    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>show.html</welcome-file>
   </welcome-file-list>
   <!-- spring 配置 -->
   <!--  本文来自 hemeinvyiqiluoben 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/hemeinvyiqiluoben/article/details/79002588?utm_source=copy  -->

@@ -11,9 +11,9 @@
         <plugins>
             <plugin>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>3.0.0</version>
+                <version>3.2.3</version>
                 <configuration>
-                    <warSourceDirectory>WebContent</warSourceDirectory>
+                    <warSourceDirectory>src/WebContent</warSourceDirectory>
                 </configuration>
             </plugin>
             <plugin>
@@ -30,6 +30,9 @@
             <resource>
                 <!-- 描述存放资源的目录，该路径相对POM路径 -->
                 <directory>src/main/resource</directory>
+            </resource>
+            <resource>
+                <directory>src/main/java/com/mybatisMe/mapper</directory>
                 <includes>
                     <include>**/*.xml</include>
                 </includes>
@@ -171,23 +174,10 @@
             <version>1.0.4</version>
         </dependency>
         <dependency>
-            <groupId>org.testng</groupId>
-            <artifactId>testng</artifactId>
-            <version>RELEASE</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>compile</scope>
-        </dependency>
-
     </dependencies>
 </project>

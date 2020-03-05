@@ -16,7 +16,6 @@ import java.util.TreeSet;
  *
  * @author <Authors name>
  * @version 1.0
- * @since <pre>2ÔÂ 13, 2020</pre>
  */
 public class RedBlackTreeTest {
 
