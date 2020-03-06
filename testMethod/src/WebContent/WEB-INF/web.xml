@@ -3,35 +3,39 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
           http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-    version="3.0">
-  <display-name></display-name>	
-  <welcome-file-list>
-    <welcome-file>show.html</welcome-file>
-  </welcome-file-list>
-  <!-- spring 配置 -->
-  <!--  本文来自 hemeinvyiqiluoben 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/hemeinvyiqiluoben/article/details/79002588?utm_source=copy  -->
-  <context-param>
+         version="3.0">
+    <welcome-file-list>
+        <welcome-file>show.html</welcome-file>
+    </welcome-file-list>
+    <!-- spring 配置 -->
+    <!--  本文来自 hemeinvyiqiluoben 的CSDN 博客 ，全文地址请点击：https://blog.csdn.net/hemeinvyiqiluoben/article/details/79002588?utm_source=copy  -->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:applicationContext.xml</param-value>
+    </context-param>
+    <context-param>
+        <param-name>log4jConfiguration</param-name>
+        <!--默认是classpath下的log4j2.xml-->
+        <param-value>classpath:log4j2.xml</param-value>
+    </context-param>
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- spring MVC 融合 -->
+    <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
+    <servlet>
+        <servlet-name>springDispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
             <param-name>contextConfigLocation</param-name>
-            <param-value>classpath:applicationContext.xml</param-value>
-  </context-param>
-  <listener>
-    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-  </listener>
-	<!-- spring MVC 融合 -->  
-  <!-- The front controller of this Spring Web application, responsible for handling all application requests -->
-	<servlet>
-		<servlet-name>springDispatcherServlet</servlet-name>
-		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
-		<init-param>
-			<param-name>contextConfigLocation</param-name>
-			<param-value>classpath:springMVC.xml</param-value>
-		</init-param>
-		<load-on-startup>1</load-on-startup>
-	</servlet>
+            <param-value>classpath:springMVC.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
 
-	<!-- Map all requests to the DispatcherServlet for handling -->
-	<servlet-mapping>
-		<servlet-name>springDispatcherServlet</servlet-name>
-		<url-pattern>*.do</url-pattern>
-	</servlet-mapping>
+    <!-- Map all requests to the DispatcherServlet for handling -->
+    <servlet-mapping>
+        <servlet-name>springDispatcherServlet</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
 </web-app>

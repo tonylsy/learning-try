@@ -17,7 +17,6 @@ public class HelloworldController {
     @Autowired
     CustomerService customerService;
 
-
     @RequestMapping("getImgCode.do")
     public void getImgCode(HttpServletRequest req, HttpServletResponse response) throws IOException {
 
@@ -41,8 +40,7 @@ public class HelloworldController {
     @RequestMapping("getCustomer.do")
     @ResponseBody
     public Customers getCustomer(Integer customerId) {
-        Customers customers = customerService.selectCustomersById(customerId);
-        return customers;
+        return customerService.selectCustomersById(customerId);
     }
 
 
