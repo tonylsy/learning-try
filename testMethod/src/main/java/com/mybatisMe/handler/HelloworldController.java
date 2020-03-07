@@ -21,7 +21,7 @@ public class HelloworldController {
 
     private Logger logger = LogManager.getLogger(HelloworldController.class);
 
-    @RequestMapping("getImgCode.do")
+    @RequestMapping("/getImgCode.do")
     public void getImgCode(HttpServletRequest req, HttpServletResponse response) throws IOException {
 
         try {
@@ -41,7 +41,7 @@ public class HelloworldController {
 
     }
 
-    @RequestMapping("getCustomer.do")
+    @RequestMapping("/getCustomer.do")
     @ResponseBody
     public Customers getCustomer(Integer customerId) {
         Customers customers = customerService.selectCustomersById(customerId);

@@ -25,7 +25,7 @@ public class TestConnect {
 	}
 
 	public void propertiesJdbcTest() throws IOException, ClassNotFoundException, SQLException {
-		InputStream in = this.getClass().getResourceAsStream("/databaseResource.properties");
+		InputStream in = this.getClass().getResourceAsStream("/database.properties");
 		InputStreamReader inputStreamReader = new InputStreamReader(in, "UTF-8");
 		Properties property = new Properties();
 		property.load(inputStreamReader);

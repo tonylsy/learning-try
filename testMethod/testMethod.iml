@@ -20,6 +20,7 @@
         <fileset id="fileset2" name="spring" removed="false">
           <file>file://$MODULE_DIR$/src/main/resource/applicationContext.xml</file>
           <file>file://$MODULE_DIR$/src/main/resource/springMVC.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resource/spring/applicationContext-db.xml</file>
         </fileset>
         <fileset id="web application context" name="MVC application context" removed="true">
           <file>file://$MODULE_DIR$/src/main/resource/applicationContext.xml</file>
@@ -72,5 +73,8 @@
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.13.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.13.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-web:2.13.1" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-core:2.10.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-databind:2.10.3" level="project" />
+    <orderEntry type="library" name="Maven: com.fasterxml.jackson.core:jackson-annotations:2.10.3" level="project" />
   </component>
 </module>

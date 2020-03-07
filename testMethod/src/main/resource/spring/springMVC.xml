@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:aop="http://www.springframework.org/schema/aop"
-       xmlns:context="http://www.springframework.org/schema/context"
        xmlns:mvc="http://www.springframework.org/schema/mvc"
        xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
-    <context:component-scan base-package="com.mybatisMe.handler"/>
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
     <mvc:annotation-driven/>
     <mvc:resources location="/js/" mapping="/js/**"/>
+    <!-- file upload setting-->
     <bean class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
         <property name="defaultEncoding" value="utf-8"/>
         <property name="maxUploadSizePerFile" value="1000000"/>
+    </bean>
+    <!-- jackson -->
+    <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                    <property name="defaultCharset" value="utf-8"></property>
+                </bean>
+            </list>
+        </property>
     </bean>
 </beans>
