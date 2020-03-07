@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+    <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
 </head>
 
 <body>
@@ -15,9 +15,13 @@ test the img code<br>
 <input id="code" type="text"/>
 <button type="button">提交</button>
 
-<h2>test the spring framework and mybatis</h2>
+<h2>test whether the spring framework and mybatis are available</h2>
+<p>press the button and get alert object</p>
 <button onclick="getCustomerId()">test</button>
 
+<h2>test log4j2</h2>
+<p>press the button and see the log in idea</p>
+<button onclick="testLog4j()">test</button>
 
 </body>
 <script type="text/javascript">
@@ -33,6 +37,21 @@ test the img code<br>
             },
             error: function (data) {
                 alert("error!");
+            }
+        });
+    }
+    function testLog4j(){
+        $.ajax({
+            url:"getCustomer.do",
+            data: {
+                customerId: 777
+            },
+            dataType: "json",
+            success: function (data) {
+                alert(data);
+            },
+            error: function (data) {
+                alert(data);
             }
         });
     }

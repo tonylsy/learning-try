@@ -1,26 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration status="${status}">
+<Configuration status="ERROR">
+    <Properties>
+        <Property name="DETAIL_LOG_NAME">learn_try</Property>
+        <Property name="ERROR_LOG_NAME">error_learn_try</Property>
+        <Property name="LOG_HOME">C:/Users/lsy/coding/log</Property>
+    </Properties>
     <Appenders>
-        <Console name="Console" target="SYSTEM_OUT">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        <Console name="console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %class{36}#%M [line:%L] - %msg%xEx%n"/>
         </Console>
-        <File name="File" fileName="testMethod.log">
-            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        <File name="detailLog" filename="${LOG_HOME}/${DETAIL_LOG_NAME}.log"
+              filePattern="${LOG_HOME}/${DETAIL_LOG_NAME}-%d{yyyy-MM-dd}-%i.log" append="true">
+            <Filters>
+                <ThresholdFilter level="WARN" onMatch="ACCEPT" onMismatch="NEUTRAL"/>
+                <ThresholdFilter level="INFO" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %class{36}#%M [line:%L] - %msg%xEx%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="100"/>
+        </File>
+        <File name="errorLog" fileName="${LOG_HOME}/${ERROR_LOG_NAME}.log"
+              filePattern="${LOG_HOME}/${ERROR_LOG_NAME}.%d{yyyy-MM-dd}.%i.log" append="true">
+            <Filters>
+                <ThresholdFilter level="error" onMatch="ACCEPT" onMismatch="DENY"/>
+            </Filters>
+            <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %class{36}#%M [line:%L] - %msg%xEx%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="10 MB"/>
+            </Policies>
+            <DefaultRolloverStrategy max="60"/>
         </File>
     </Appenders>
     <Loggers>
-        <!-- use group id to mark where to cover -->
-        <Logger name="com.mybatisMe" level="warn">
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="File"/>
-        </Logger>
-        <Logger name="org.mybatis" level="trace">
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="File"/>
-        </Logger>
-        <Root level="error">
-            <AppenderRef ref="Console"/>
-            <AppenderRef ref="File"/>
+        <Root level="TRACE">
+            <AppenderRef ref="console" level="TRACE"/>
+            <AppenderRef ref="detailLog" level="TRACE"/>
+            <AppenderRef ref="errorLog" level="ERROR"/>
         </Root>
+        <logger name="com.mybatisMe" leve="ERROR"/>
+        <logger name="com.mybatisMe.Dao" leve="DEBUG">
+            <AppenderRef ref="console"/>
+        </logger>
     </Loggers>
 </Configuration>

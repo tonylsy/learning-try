@@ -43,7 +43,6 @@
 		<property name="Oracle" value="oracle" />
 	</databaseIdProvider>
 	<mappers>
-		<mapper resource="com/mybatisMe/mapper/UserDao.xml"/>
-		<!-- <package name="com.mybatisMe.Dao"/> -->
+		<mapper resource="classpath:mapper/UserDao.xml"/>
 	</mappers>
 </configuration>

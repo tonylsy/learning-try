@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.mybatisMe.entities.Customers;
 import com.mybatisMe.service.CustomerService;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class HelloworldController {
     @Autowired
     CustomerService customerService;
+
+    private Logger logger = LogManager.getLogger(HelloworldController.class);
 
     @RequestMapping("getImgCode.do")
     public void getImgCode(HttpServletRequest req, HttpServletResponse response) throws IOException {
@@ -40,7 +44,11 @@ public class HelloworldController {
     @RequestMapping("getCustomer.do")
     @ResponseBody
     public Customers getCustomer(Integer customerId) {
-        return customerService.selectCustomersById(customerId);
+        Customers customers = customerService.selectCustomersById(customerId);
+        if(customers == null){
+            logger.error("the customerId is not find!");
+        }
+        return customers;
     }
 
 

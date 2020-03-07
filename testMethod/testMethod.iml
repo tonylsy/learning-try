@@ -17,10 +17,12 @@
     </facet>
     <facet type="Spring" name="Spring">
       <configuration>
-        <fileset id="fileset2" name="Spring Application Context (2)" removed="false">
+        <fileset id="fileset2" name="spring" removed="false">
           <file>file://$MODULE_DIR$/src/main/resource/applicationContext.xml</file>
           <file>file://$MODULE_DIR$/src/main/resource/springMVC.xml</file>
-          <file>file://$MODULE_DIR$/src/main/resource/spring-db.xml</file>
+        </fileset>
+        <fileset id="web application context" name="MVC application context" removed="true">
+          <file>file://$MODULE_DIR$/src/main/resource/applicationContext.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -54,8 +56,7 @@
     <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:2.6.0" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.4.6" level="project" />
     <orderEntry type="library" name="Maven: org.mybatis:mybatis-spring:1.3.2" level="project" />
-    <orderEntry type="library" name="Maven: com.mchange:c3p0:0.9.5.4" level="project" />
-    <orderEntry type="library" name="Maven: com.mchange:mchange-commons-java:0.2.15" level="project" />
+    <orderEntry type="library" name="Maven: com.alibaba:druid:1.1.20" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-test:5.0.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-jdbc:5.0.9.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-tx:5.0.9.RELEASE" level="project" />
@@ -68,11 +69,8 @@
     <orderEntry type="library" name="Maven: edu.princeton.cs:algs4:1.0.4" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.12" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.3" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-slf4j-impl:2.13.1" level="project" />
-    <orderEntry type="library" name="Maven: org.slf4j:slf4j-api:1.7.25" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-api:2.13.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-core:2.13.1" level="project" />
     <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-web:2.13.1" level="project" />
-    <orderEntry type="library" name="Maven: org.apache.logging.log4j:log4j-jcl:2.13.1" level="project" />
   </component>
 </module>
