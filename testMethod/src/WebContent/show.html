@@ -27,33 +27,44 @@ test the img code<br>
 <script type="text/javascript">
     function getCustomerId() {
         $.ajax({
-            url:"getCustomer.do",
+            url: "getCustomer.do",
             data: {
                 customerId: 103
             },
             dataType: "json",
-            success: function (data) {
-                alert(data);
+            success: function (result) {
+                success(result);
             },
-            error: function (data) {
-                alert("error!");
+            error: function (result) {
+                error(result)
             }
         });
     }
-    function testLog4j(){
+
+    function testLog4j() {
         $.ajax({
-            url:"getCustomer.do",
+            url: "getCustomer.do",
             data: {
                 customerId: 777
             },
             dataType: "json",
-            success: function (data) {
-                alert(data);
+            success: function (result) {
+                success(result);
             },
-            error: function (data) {
-                alert(data);
+            error: function (result) {
+                error(result)
             }
         });
+    }
+    function success(result){
+        if (result.status) {
+            alert(result.data);
+        } else {
+            alert(result.message);
+        }
+    }
+    function error(result){
+        alert(result.message);
     }
 </script>
 </html>
