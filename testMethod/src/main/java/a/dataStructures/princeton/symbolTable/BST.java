@@ -64,30 +64,31 @@ public class BST<Key extends Comparable<Key>, Value> {
         int compare = key.compareTo(node.key);
         if (compare > 0) {
             node.right = delete(node.right, key);
-        } else if(compare < 0){
+        } else if (compare < 0) {
             node.left = delete(node.left, key);
-        }else{
-           if(node.left == null) return node.right;
-           if(node.right == null) return node.left;
-           Node<Key,Value> temp = node;
-           node = min(node.right);
-           node.left = temp.left;
-           node.right = deleteMin(temp.right);
+        } else {
+            if (node.left == null) return node.right;
+            if (node.right == null) return node.left;
+            Node<Key, Value> temp = node;
+            node = min(node.right);
+            node.left = temp.left;
+            node.right = deleteMin(temp.right);
         }
         node.count = size(node.left) + size(node.right) + 1;
         return node;
     }
 
-    public Key min(){
+    public Key min() {
         return min(root).key;
     }
-    private Node<Key,Value> min(Node<Key,Value> node){
-        Node<Key,Value> current = node;
-        while(current != null){
-            Node<Key,Value> left = current.left;
-            if(left ==null){
+
+    private Node<Key, Value> min(Node<Key, Value> node) {
+        Node<Key, Value> current = node;
+        while (current != null) {
+            Node<Key, Value> left = current.left;
+            if (left == null) {
                 return current;
-            }else{
+            } else {
                 current = left;
             }
         }

@@ -22,7 +22,7 @@ public class HashTable {
     }
 
     public static void main(String[] args) {
-        Map<Integer,Integer> map = new HashMap<>();
-        Map<Integer,Integer> map2 = new TreeMap<>();
+        Map<Integer, Integer> map = new HashMap<>();
+        Map<Integer, Integer> map2 = new TreeMap<>();
     }
 }

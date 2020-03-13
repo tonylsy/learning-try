@@ -12,27 +12,27 @@ import com.mybatisMe.service.UserService;
 
 @Service("userService")
 public class UserSeriveImpl implements UserService {
-	@Autowired
-	UserDao userDao;
-	
-	@Override
-	public User getUserById(int id) throws Exception {
-		// TODO Auto-generated method stub
-		User user = userDao.selectUser(id);
-		return user;
-	}
+    @Autowired
+    UserDao userDao;
 
-	@Override
-	public void createUser(User user) throws Exception {
-		// TODO Auto-generated method stub
-		userDao.insertUser(user);
-	}
+    @Override
+    public User getUserById(int id) throws Exception {
+        // TODO Auto-generated method stub
+        User user = userDao.selectUser(id);
+        return user;
+    }
 
-	@Override
-	@Transactional
-	public void createUsers(List<User> users) throws Exception {
-		// TODO Auto-generated method stub
-		userDao.insertUsers(users);
-	}
+    @Override
+    public void createUser(User user) throws Exception {
+        // TODO Auto-generated method stub
+        userDao.insertUser(user);
+    }
+
+    @Override
+    @Transactional
+    public void createUsers(List<User> users) throws Exception {
+        // TODO Auto-generated method stub
+        userDao.insertUsers(users);
+    }
 
 }

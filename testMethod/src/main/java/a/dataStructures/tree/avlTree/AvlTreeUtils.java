@@ -9,15 +9,15 @@ public class AvlTreeUtils<T> {
 
     public AvlTreeNode<T> insert(T target, AvlTreeNode<T> node) {
         //it means target in on a leaf
-        if(node == null){
-            return new AvlTreeNode<T>(target,null,null);
+        if (node == null) {
+            return new AvlTreeNode<T>(target, null, null);
         }
 
         int compare = root.compareTo(target);
 
-        if(compare < 0){
-            node.left = insert(target,node.left);
-        }else if (compare > 0){
+        if (compare < 0) {
+            node.left = insert(target, node.left);
+        } else if (compare > 0) {
             node.right = insert(target, node.right);
         }
 
@@ -28,28 +28,28 @@ public class AvlTreeUtils<T> {
 
     public AvlTreeNode<T> balance(AvlTreeNode<T> node) {
 
-        if(node == null){
+        if (node == null) {
             return node;
         }
 
         AvlTreeNode<T> left_node = node.left;
         AvlTreeNode<T> right_node = node.left;
         //left tree is deeper than right tree
-        if(left_node.height - right_node.height > ALLOWED_IMBALANCE){
+        if (left_node.height - right_node.height > ALLOWED_IMBALANCE) {
 
             // decide how to turn the left children
-            if(left_node.left.height >= left_node.right.height){
+            if (left_node.left.height >= left_node.right.height) {
                 node = rotateWithLeftChild(node);
-            }else{
+            } else {
                 node = doubleWithLeftChild(node);
             }
 
             //right tree is deeper than right tree
-        }else if (right_node.height  - left_node.height> ALLOWED_IMBALANCE){
+        } else if (right_node.height - left_node.height > ALLOWED_IMBALANCE) {
 
-            if(right_node.right.height >= right_node.right.left.height){
+            if (right_node.right.height >= right_node.right.left.height) {
                 node = rotateWithRightChild(node);
-            }else{
+            } else {
                 node = doubleWithRightChild(node);
             }
 

@@ -5,6 +5,7 @@ import java.util.Objects;
 
 /**
  * add the variable on read
+ *
  * @param <T>
  */
 public class MyBinaryNode<T> extends Node<T> {
@@ -22,21 +23,22 @@ public class MyBinaryNode<T> extends Node<T> {
         this.read = false;
     }
 
-    public MyBinaryNode getLeft(){
-        if(super.left == null){
+    public MyBinaryNode getLeft() {
+        if (super.left == null) {
             return null;
         }
         return new MyBinaryNode(super.left);
     }
-    public MyBinaryNode getRight(){
-        if(super.right == null){
+
+    public MyBinaryNode getRight() {
+        if (super.right == null) {
             return null;
         }
         return new MyBinaryNode(super.right);
     }
 
-    public static Node parseNode(MyBinaryNode binaryNode){
-        return new Node(binaryNode.context,binaryNode.left,binaryNode.right);
+    public static Node parseNode(MyBinaryNode binaryNode) {
+        return new Node(binaryNode.context, binaryNode.left, binaryNode.right);
     }
 
     public void setRead() {
@@ -50,7 +52,6 @@ public class MyBinaryNode<T> extends Node<T> {
     public boolean hasRead() {
         return this.read;
     }
-
 
 
     @Override

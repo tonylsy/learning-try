@@ -260,7 +260,7 @@ public class RedBlackTree<Key extends Comparable<Key>, Value> {
         //replace toBeDeletedNode to its child
         Node<Key, Value> grandparent = toBeDeletedNode.parent;
         child.parent = grandparent;
-        if(!isNullNode(grandparent)){
+        if (!isNullNode(grandparent)) {
             if (toBeDeletedNode.equals(grandparent.left)) {
                 grandparent.left = child;
             } else {

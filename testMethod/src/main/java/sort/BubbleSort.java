@@ -1,170 +1,160 @@
 package sort;
 
 public class BubbleSort {
-	// use two loop to sort
-	public void twoLoop(int[] arr) {
-		int tmp = 0;
-		for (int i = 0; i < arr.length; i++) {
-			for (int j = 0; j < arr.length - i - 1; j++) {
-				if (arr[j] > arr[j + 1]) {
-					tmp = arr[j + 1];
-					arr[j + 1] = arr[j];
-					arr[j] = tmp;
-				}
-			}
-		}
-	}
+    // use two loop to sort
+    public void twoLoop(int[] arr) {
+        int tmp = 0;
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    tmp = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = tmp;
+                }
+            }
+        }
+    }
 
-	// use issort record is finished
-	public void twoLoopWithIndex(int[] arr) {
-		int tmp = 0;
-		for (int i = 0; i < arr.length; i++) {
-			boolean isSorted = true;
-			for (int j = 0; j < arr.length - i - 1; j++) {
-				if (arr[j] > arr[j + 1]) {
-					tmp = arr[j + 1];
-					arr[j + 1] = arr[j];
-					arr[j] = tmp;
+    // use issort record is finished
+    public void twoLoopWithIndex(int[] arr) {
+        int tmp = 0;
+        for (int i = 0; i < arr.length; i++) {
+            boolean isSorted = true;
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    tmp = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = tmp;
 
-					// record has changed
-					isSorted = false;
-				}
-			}
-			if (isSorted) {
-				break;
-			}
-		}
-	}
+                    // record has changed
+                    isSorted = false;
+                }
+            }
+            if (isSorted) {
+                break;
+            }
+        }
+    }
 
-	// use border to use
-	public void twoLoopWithBorder(int[] arr) {
-		int tmp = 0;
-		int endBorder = arr.length - 1;
-		boolean isSorted = true;
-		for (int i = 0; i < arr.length; i++) {
-			isSorted = true;
-			int border = 0;
-			for (int j = 0; j < endBorder; j++) {
-				if (arr[j] > arr[j + 1]) {
-					tmp = arr[j + 1];
-					arr[j + 1] = arr[j];
-					arr[j] = tmp;
+    // use border to use
+    public void twoLoopWithBorder(int[] arr) {
+        int tmp = 0;
+        int endBorder = arr.length - 1;
+        boolean isSorted = true;
+        for (int i = 0; i < arr.length; i++) {
+            isSorted = true;
+            int border = 0;
+            for (int j = 0; j < endBorder; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    tmp = arr[j + 1];
+                    arr[j + 1] = arr[j];
+                    arr[j] = tmp;
 
-					// record is changed
-					isSorted = false;
+                    // record is changed
+                    isSorted = false;
 
-					// record broder
-					border = j;
-				}
-			}
-			// because block so make it out
-			endBorder = border;
-			if (isSorted) {
-				break;
-			}
-		}
-	}
+                    // record broder
+                    border = j;
+                }
+            }
+            // because block so make it out
+            endBorder = border;
+            if (isSorted) {
+                break;
+            }
+        }
+    }
 
-	// cocktail
-	public void CockTailSort(int[] array) {
-		int tmp = 0;
+    // cocktail
+    public void CockTailSort(int[] array) {
+        int tmp = 0;
 
-		// 记录右侧最后一次交换的位置
+        // 记录右侧最后一次交换的位置
 
-		int lastRightExchangeIndex = 0;
+        int lastRightExchangeIndex = 0;
 
-		// 记录左侧最后一次交换的位置
+        // 记录左侧最后一次交换的位置
 
-		int lastLeftExchangeIndex = 0;
+        int lastLeftExchangeIndex = 0;
 
-		// 无序数列的右边界，每次比较只需要比到这里为止
+        // 无序数列的右边界，每次比较只需要比到这里为止
 
-		int rightSortBorder = array.length - 1;
+        int rightSortBorder = array.length - 1;
 
-		// 无序数列的左边界，每次比较只需要比到这里为止
+        // 无序数列的左边界，每次比较只需要比到这里为止
 
-		int leftSortBorder = 0;
+        int leftSortBorder = 0;
 
-		for (int i = 0; i < array.length / 2; i++)
+        for (int i = 0; i < array.length / 2; i++) {
 
-		{
+            // 有序标记，每一轮的初始是true
 
-			// 有序标记，每一轮的初始是true
+            boolean isSorted = true;
 
-			boolean isSorted = true;
+            // 奇数轮，从左向右比较和交换
 
-			// 奇数轮，从左向右比较和交换
+            for (int j = leftSortBorder; j < rightSortBorder; j++) {
 
-			for (int j = leftSortBorder; j < rightSortBorder; j++)
+                if (array[j] > array[j + 1]) {
 
-			{
+                    tmp = array[j];
 
-				if (array[j] > array[j + 1])
+                    array[j] = array[j + 1];
 
-				{
+                    array[j + 1] = tmp;
 
-					tmp = array[j];
+                    // 有元素交换，所以不是有序，标记变为false
 
-					array[j] = array[j + 1];
+                    isSorted = false;
 
-					array[j + 1] = tmp;
+                    lastRightExchangeIndex = j;
 
-					// 有元素交换，所以不是有序，标记变为false
+                }
 
-					isSorted = false;
+            }
 
-					lastRightExchangeIndex = j;
+            rightSortBorder = lastRightExchangeIndex;
 
-				}
+            if (isSorted) {
 
-			}
+                break;
 
-			rightSortBorder = lastRightExchangeIndex;
+            }
 
-			if (isSorted) {
+            // 偶数轮之前，重新标记为true
 
-				break;
+            isSorted = true;
 
-			}
+            // 偶数轮，从右向左比较和交换
 
-			// 偶数轮之前，重新标记为true
+            for (int j = rightSortBorder; j > leftSortBorder; j--) {
 
-			isSorted = true;
+                if (array[j] < array[j - 1]) {
 
-			// 偶数轮，从右向左比较和交换
+                    tmp = array[j];
 
-			for (int j = rightSortBorder; j > leftSortBorder; j--)
+                    array[j] = array[j - 1];
 
-			{
+                    array[j - 1] = tmp;
 
-				if (array[j] < array[j - 1])
+                    // 有元素交换，所以不是有序，标记变为false
 
-				{
+                    isSorted = false;
 
-					tmp = array[j];
+                    lastLeftExchangeIndex = j;
 
-					array[j] = array[j - 1];
+                }
 
-					array[j - 1] = tmp;
+            }
 
-					// 有元素交换，所以不是有序，标记变为false
+            leftSortBorder = lastLeftExchangeIndex;
 
-					isSorted = false;
+            if (isSorted) {
 
-					lastLeftExchangeIndex = j;
+                break;
 
-				}
+            }
 
-			}
-
-			leftSortBorder = lastLeftExchangeIndex;
-
-			if (isSorted) {
-
-				break;
-
-			}
-
-		}
-	}
+        }
+    }
 }

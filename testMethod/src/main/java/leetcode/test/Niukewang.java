@@ -10,25 +10,31 @@ public class Niukewang {
         System.out.println(object_b.a);*/
 
     }
-    public static void add(Byte b){
+
+    public static void add(Byte b) {
         b++;
     }
-    public static void addObject(B b){
+
+    public static void addObject(B b) {
         b.a++;
     }
-    public static void addObject2(B b){
+
+    public static void addObject2(B b) {
         b.a = b.a++;
     }
-    public static void addObject3(B b){
+
+    public static void addObject3(B b) {
         b.a = b.a;
         b.a++;
     }
-    public static void addObject2EqualMethod(B b){
+
+    public static void addObject2EqualMethod(B b) {
         byte tmp = b.a;
         b.a = b.a;
         tmp++;
     }
-    private static class B{
-       public byte a = 0;
+
+    private static class B {
+        public byte a = 0;
     }
 }

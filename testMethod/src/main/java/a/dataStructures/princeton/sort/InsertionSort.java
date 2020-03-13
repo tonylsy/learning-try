@@ -5,7 +5,7 @@ public class InsertionSort {
         for (int i = 1; i < arr.length; i++) {
             for (int j = i; j > 0; j--) {
                 if (SortUtils.isLess(arr[j], arr[j - 1])) {
-                    SortUtils.exch(arr, j-1, j);
+                    SortUtils.exch(arr, j - 1, j);
                 } else {
                     break;
                 }

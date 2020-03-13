@@ -1,13 +1,13 @@
 package list;
 
 public class Node {
-	//node content
-	public Object element;
-	
-	//store next node address
-	public Node next;
+    //node content
+    public Object element;
 
-	public Node(Object o) {
-		element = o;
-	}
+    //store next node address
+    public Node next;
+
+    public Node(Object o) {
+        element = o;
+    }
 }

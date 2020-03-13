@@ -1,7 +1,7 @@
 package a.dataStructures.princeton.priorityQueue.project;
 
 public class TestUnits {
-    public static Board puzzle07(){
+    public static Board puzzle07() {
         //reference moves() = 7
         int[][] tiles = new int[3][3];
         tiles[0][0] = 1;
@@ -16,7 +16,8 @@ public class TestUnits {
         Board initial = new Board(tiles);
         return initial;
     }
-    public static Board puzzle08(){
+
+    public static Board puzzle08() {
         //reference moves() = 8
         int[][] tiles = new int[3][3];
         tiles[0][0] = 2;
@@ -31,7 +32,8 @@ public class TestUnits {
         Board initial = new Board(tiles);
         return initial;
     }
-    public static Board puzzle01(){
+
+    public static Board puzzle01() {
         //reference moves() = 2
         int[][] tiles = new int[2][2];
         tiles[0][0] = 1;

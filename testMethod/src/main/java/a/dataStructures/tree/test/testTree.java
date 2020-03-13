@@ -106,7 +106,7 @@ public class testTree {
 
     /**
      * create a binarySearchTree
-     *
+     * <p>
      * inOrder:
      * postOrder: 30 55 65 60 76 78 77 75 85 80 70 40 107 108 109 110 180 140 150 100
      *

@@ -2,6 +2,7 @@ package a.dataStructures.princeton.queue.project;
 
 import java.util.Iterator;
 import java.util.NoSuchElementException;
+
 @Deprecated
 public class DequeOld<Item> implements Iterable<Item> {
     private Node first, last;

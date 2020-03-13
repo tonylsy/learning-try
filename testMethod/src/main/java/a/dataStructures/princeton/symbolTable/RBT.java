@@ -27,7 +27,7 @@ public class RBT<Key extends Comparable<Key>, Value> {
 
         @Override
         public String toString() {
-            String c = color?"red":"black";
+            String c = color ? "red" : "black";
             return value + "[" + c + "]";
         }
     }
@@ -118,7 +118,7 @@ public class RBT<Key extends Comparable<Key>, Value> {
     }
 
     Node put(Node node, Key key, Value value) {
-        if (node == null) return new Node(key, value,1, RED);
+        if (node == null) return new Node(key, value, 1, RED);
         int compare = key.compareTo(node.key);
         if (compare == 0) {
             node.value = value;
@@ -161,8 +161,8 @@ public class RBT<Key extends Comparable<Key>, Value> {
     }
 
     public static void main(String[] args) {
-        char[] chars = {'s', 'e', 'a', 'r', 'c', 'h', 'x', 'm', 'p', 'l' };
-        char[] chars2 = {'a', 'c', 'e', 'h', 'l', 'm', 'p', 'r', 's', 'x' };
+        char[] chars = {'s', 'e', 'a', 'r', 'c', 'h', 'x', 'm', 'p', 'l'};
+        char[] chars2 = {'a', 'c', 'e', 'h', 'l', 'm', 'p', 'r', 's', 'x'};
         RBT<Character, Character> brt1 = new RBT<>();
         RBT<Character, Character> brt2 = new RBT<>();
         for (int i = 0; i < chars.length; i++) {

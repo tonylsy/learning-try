@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+
 @Deprecated
 public class BruteCollinearPointsOld {
     private int segments_num = 0;

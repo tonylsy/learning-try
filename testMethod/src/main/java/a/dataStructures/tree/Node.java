@@ -7,7 +7,7 @@ import java.util.Objects;
  *
  * @param <T>
  */
-public class Node<T>{
+public class Node<T> {
     protected T context;
     protected Node<T> left;
     protected Node<T> right;

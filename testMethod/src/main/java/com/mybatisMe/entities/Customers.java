@@ -115,7 +115,6 @@ public class Customers {
      * This method returns the value of the database column customers.customerNumber
      *
      * @return the value of customers.customerNumber
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public Integer getCustomernumber() {
@@ -127,7 +126,6 @@ public class Customers {
      * This method sets the value of the database column customers.customerNumber
      *
      * @param customernumber the value for customers.customerNumber
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setCustomernumber(Integer customernumber) {
@@ -139,7 +137,6 @@ public class Customers {
      * This method returns the value of the database column customers.customerName
      *
      * @return the value of customers.customerName
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public String getCustomername() {
@@ -151,7 +148,6 @@ public class Customers {
      * This method sets the value of the database column customers.customerName
      *
      * @param customername the value for customers.customerName
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setCustomername(String customername) {
@@ -163,7 +159,6 @@ public class Customers {
      * This method returns the value of the database column customers.contactLastName
      *
      * @return the value of customers.contactLastName
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public String getContactlastname() {
@@ -175,7 +170,6 @@ public class Customers {
      * This method sets the value of the database column customers.contactLastName
      *
      * @param contactlastname the value for customers.contactLastName
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setContactlastname(String contactlastname) {
@@ -187,7 +181,6 @@ public class Customers {
      * This method returns the value of the database column customers.contactFirstName
      *
      * @return the value of customers.contactFirstName
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public String getContactfirstname() {
@@ -199,7 +192,6 @@ public class Customers {
      * This method sets the value of the database column customers.contactFirstName
      *
      * @param contactfirstname the value for customers.contactFirstName
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setContactfirstname(String contactfirstname) {
@@ -211,7 +203,6 @@ public class Customers {
      * This method returns the value of the database column customers.phone
      *
      * @return the value of customers.phone
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public String getPhone() {
@@ -223,7 +214,6 @@ public class Customers {
      * This method sets the value of the database column customers.phone
      *
      * @param phone the value for customers.phone
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setPhone(String phone) {
@@ -235,7 +225,6 @@ public class Customers {
      * This method returns the value of the database column customers.addressLine1
      *
      * @return the value of customers.addressLine1
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public String getAddressline1() {
@@ -247,7 +236,6 @@ public class Customers {
      * This method sets the value of the database column customers.addressLine1
      *
      * @param addressline1 the value for customers.addressLine1
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setAddressline1(String addressline1) {
@@ -259,7 +247,6 @@ public class Customers {
      * This method returns the value of the database column customers.addressLine2
      *
      * @return the value of customers.addressLine2
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public String getAddressline2() {
@@ -271,7 +258,6 @@ public class Customers {
      * This method sets the value of the database column customers.addressLine2
      *
      * @param addressline2 the value for customers.addressLine2
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setAddressline2(String addressline2) {
@@ -283,7 +269,6 @@ public class Customers {
      * This method returns the value of the database column customers.city
      *
      * @return the value of customers.city
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public String getCity() {
@@ -295,7 +280,6 @@ public class Customers {
      * This method sets the value of the database column customers.city
      *
      * @param city the value for customers.city
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setCity(String city) {
@@ -307,7 +291,6 @@ public class Customers {
      * This method returns the value of the database column customers.state
      *
      * @return the value of customers.state
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public String getState() {
@@ -319,7 +302,6 @@ public class Customers {
      * This method sets the value of the database column customers.state
      *
      * @param state the value for customers.state
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setState(String state) {
@@ -331,7 +313,6 @@ public class Customers {
      * This method returns the value of the database column customers.postalCode
      *
      * @return the value of customers.postalCode
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public String getPostalcode() {
@@ -343,7 +324,6 @@ public class Customers {
      * This method sets the value of the database column customers.postalCode
      *
      * @param postalcode the value for customers.postalCode
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setPostalcode(String postalcode) {
@@ -355,7 +335,6 @@ public class Customers {
      * This method returns the value of the database column customers.country
      *
      * @return the value of customers.country
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public String getCountry() {
@@ -367,7 +346,6 @@ public class Customers {
      * This method sets the value of the database column customers.country
      *
      * @param country the value for customers.country
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setCountry(String country) {
@@ -379,7 +357,6 @@ public class Customers {
      * This method returns the value of the database column customers.salesRepEmployeeNumber
      *
      * @return the value of customers.salesRepEmployeeNumber
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public Integer getSalesrepemployeenumber() {
@@ -391,7 +368,6 @@ public class Customers {
      * This method sets the value of the database column customers.salesRepEmployeeNumber
      *
      * @param salesrepemployeenumber the value for customers.salesRepEmployeeNumber
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setSalesrepemployeenumber(Integer salesrepemployeenumber) {
@@ -403,7 +379,6 @@ public class Customers {
      * This method returns the value of the database column customers.creditLimit
      *
      * @return the value of customers.creditLimit
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public BigDecimal getCreditlimit() {
@@ -415,7 +390,6 @@ public class Customers {
      * This method sets the value of the database column customers.creditLimit
      *
      * @param creditlimit the value for customers.creditLimit
-     *
      * @mbggenerated Wed Feb 26 12:02:21 CST 2020
      */
     public void setCreditlimit(BigDecimal creditlimit) {

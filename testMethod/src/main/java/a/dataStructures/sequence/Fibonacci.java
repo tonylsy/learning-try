@@ -39,8 +39,8 @@ public class Fibonacci {
     public static int getElement(int n) {
         int current = 0;
         int elementBig = 1;
-            int element = 1;
-            if (n <= 2) {
+        int element = 1;
+        if (n <= 2) {
             return 1;
         }
         /*

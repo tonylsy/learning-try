@@ -3,6 +3,7 @@ package a.dataStructures.princeton.queue.project;
 import edu.princeton.cs.algs4.StdRandom;
 
 import java.util.Iterator;
+
 @Deprecated
 public class RandomizedQueueOld<Item> implements Iterable<Item> {
     private int size;

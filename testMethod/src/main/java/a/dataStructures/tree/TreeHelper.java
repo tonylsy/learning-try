@@ -37,7 +37,6 @@ public class TreeHelper<T> {
     }
 
     /**
-     *
      * @author lsy
      */
     private void preOrderTraverse() {

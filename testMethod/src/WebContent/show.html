@@ -56,14 +56,16 @@ test the img code<br>
             }
         });
     }
-    function success(result){
+
+    function success(result) {
         if (result.status) {
             alert(result.data);
         } else {
             alert(result.message);
         }
     }
-    function error(result){
+
+    function error(result) {
         alert(result.message);
     }
 </script>
