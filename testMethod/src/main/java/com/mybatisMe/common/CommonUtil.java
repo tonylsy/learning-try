@@ -21,6 +21,7 @@ public class CommonUtil {
         return ctx.getBean(beanname);
     }
 
+    @SuppressWarnings( "rawtypes")
     public static Object getBean(Class clazz) {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
         return ctx.getBean(clazz);
