@@ -33,7 +33,16 @@ public class ListNode {
         }
         return true;
     }
-
+    static ListNode createList(int[] val){
+        if(val.length == 0) return new ListNode();
+        ListNode head = new ListNode(val[0]);
+        ListNode current = head;
+        for (int i = 1; i < val.length; i++) {
+            current.next = new ListNode(val[i]);
+            current = current.next;
+        }
+        return head;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
