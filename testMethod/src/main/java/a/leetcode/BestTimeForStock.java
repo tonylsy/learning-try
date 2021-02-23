@@ -3,7 +3,7 @@ package a.leetcode;
 /**
  * @author Siyuan Li
  * @version 1.0.0
- * @Description
+ * @Description https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/
  **/
 public class BestTimeForStock {
     public static void main(String[] args) {
