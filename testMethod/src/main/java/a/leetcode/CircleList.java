@@ -33,6 +33,28 @@ public class CircleList {
     }
 
     public static boolean hasCycle(ListNode head) {
+        if(Objects.isNull(head)){
+            return false;
+        }
+        ListNode slow = head;
+        ListNode fast = head.next;
+        while (!slow.equals(fast)) {
+            slow = slow.next;
+
+            if(Objects.isNull(fast)){
+                return false;
+            }
+
+            if(Objects.isNull(fast.next)){
+                return false;
+            }
+
+            fast = fast.next.next;
+        }
+        return true;
+    }
+
+    public static boolean hasCycle2(ListNode head) {
         try {
             ListNode slow = head;
             ListNode fast = head.next;
